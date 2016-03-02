@@ -8,9 +8,9 @@ require('./styles/style.scss')
 
 const store = createStore( reducer )
 
-const Btn = ({ value }) => ( <span onClick={ () => appendNumber( value ) } >{ value }</span> )
-const Operator = ({ op }) => ( <span onClick={ () => modifyNumber( op ) }  className="operator">{ op }</span> )
-const Sum = ({ value }) => ( <span className="eval" onClick={ calculateNumber }>{ value }</span> )
+const Btn = ({ onClick, value }) => ( <span onClick={ onClick } >{ value }</span> )
+const Operator = ({ onClick, op }) => ( <span onClick={ onClick }  className="operator">{ op }</span> )
+const Sum = ({ onClick, value }) => ( <span className="eval" onClick={ onClick }>{ value }</span> )
 
 const appendNumber = number => {
     store.dispatch({
@@ -43,22 +43,22 @@ class Calculator extends Component {
             	</div>
 
             	<div className="keys">
-            		<Btn value={ 7 }/>
-            		<Btn value={ 8 }/>
-            		<Btn value={ 9 }/>
-            		<Operator op={ '+' } />
-            		<Btn value={ 4 }/>
-            		<Btn value={ 5 }/>
-            		<Btn value={ 6 }/>
-            		<Operator op={ '-' } />
-            		<Btn value={ 1 }/>
-            		<Btn value={ 2 }/>
-            		<Btn value={ 3 }/>
-            		<Operator op={ '÷' } />
-            		<Btn value={ 0 }/>
-            		<Btn value={ '.' }/>
-            		<Sum value={ '=' }/>
-            		<Operator op={ 'x' } />
+            		<Btn onClick={ () => appendNumber( value ) } value={ 7 }/>
+            		<Btn onClick={ () => appendNumber( value ) } value={ 8 }/>
+            		<Btn onClick={ () => appendNumber( value ) } value={ 9 }/>
+            		<Operator onClick={ () => modifyNumber( op ) } op={ '+' } />
+            		<Btn onClick={ () => appendNumber( value ) } value={ 4 }/>
+            		<Btn onClick={ () => appendNumber( value ) } value={ 5 }/>
+            		<Btn onClick={ () => appendNumber( value ) } value={ 6 }/>
+            		<Operator onClick={ () => modifyNumber( op ) } op={ '-' } />
+            		<Btn onClick={ () => appendNumber( value ) } value={ 1 }/>
+            		<Btn onClick={ () => appendNumber( value ) } value={ 2 }/>
+            		<Btn onClick={ () => appendNumber( value ) } value={ 3 }/>
+            		<Operator onClick={ () => modifyNumber( op ) } op={ '÷' } />
+            		<Btn onClick={ () => appendNumber( value ) } value={ 0 }/>
+            		<Btn onClick={ () => appendNumber( value ) } value={ '.' }/>
+            		<Sum onClick={ calculateNumber } value={ '=' }/>
+            		<Operator onClick={ () => modifyNumber( op ) } op={ 'x' } />
             	</div>
 
             </div>
